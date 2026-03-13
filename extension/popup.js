@@ -1,47 +1,19 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // Elements
-    const setupView = document.getElementById('setup-view');
     const mainView = document.getElementById('main-view');
     const loadingView = document.getElementById('loading-view');
     const resultView = document.getElementById('result-view');
 
-    const apiKeyInput = document.getElementById('api-key');
-    const saveKeyBtn = document.getElementById('save-key');
-    const scanBtn = document.getElementById('scan-btn');
-    const settingsBtn = document.getElementById('settings-btn');
     const backBtn = document.getElementById('back-btn');
     const whatsappStatus = document.getElementById('whatsapp-status');
+    const scanBtn = document.getElementById('scan-btn');
 
-    // Check state
-    const data = await chrome.storage.local.get(['nvidia_api_key']);
-    let apiKey = data.nvidia_api_key || '';
+    // Hardcoded API Key
+    const apiKey = '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';
 
-    if (!apiKey) {
-        showView(setupView);
-    } else {
-        showView(mainView);
-        checkWhatsApp();
-    }
-
-    // Save Key
-    saveKeyBtn.addEventListener('click', () => {
-        const key = apiKeyInput.value.trim();
-        if (key.startsWith('nvapi-')) {
-            chrome.storage.local.set({ nvidia_api_key: key }, () => {
-                apiKey = key;
-                showView(mainView);
-                checkWhatsApp();
-            });
-        } else {
-            alert("Invalid key format. Should start with 'nvapi-'");
-        }
-    });
-
-    // Settings
-    settingsBtn.addEventListener('click', () => {
-        apiKeyInput.value = apiKey;
-        showView(setupView);
-    });
+    // Start in main view
+    showView(mainView);
+    checkWhatsApp();
 
     // Back from Results
     backBtn.addEventListener('click', () => {
@@ -185,7 +157,7 @@ ${text.substring(0, 3000)}`; // limit size
     }
 
     function showView(viewEl) {
-        [setupView, mainView, loadingView, resultView].forEach(v => v.classList.add('hidden'));
+        [mainView, loadingView, resultView].forEach(v => v.classList.add('hidden'));
         viewEl.classList.remove('hidden');
     }
 });
