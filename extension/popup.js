@@ -46,20 +46,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     scanBtn.addEventListener('click', async () => {
         showView(loadingView);
 
-        // Inject Script to extract chat
+        // Request chat text from content script
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            files: ['content.js']
-        }, (results) => {
-            if (chrome.runtime.lastError || !results || !results[0]) {
-                alert("Failed to read chat. Are you in an active chat screen?");
+        chrome.tabs.sendMessage(tab.id, { action: "GET_CHAT" }, (response) => {
+            if (chrome.runtime.lastError || !response || !response.chatText) {
+                alert("Failed to read chat. Are you in an active chat screen on WhatsApp Web?");
                 showView(mainView);
                 return;
             }
 
-            const chatText = results[0].result;
-            if (!chatText || chatText.length < 10) {
+            const chatText = response.chatText;
+            if (chatText.length < 10) {
                 alert("Not enough text found in the current chat view.");
                 showView(mainView);
                 return;

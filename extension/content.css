@@ -1,0 +1,99 @@
+/* ConvoShield Injected Alert UI */
+#convoshield-alert-overlay {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 340px;
+    background: rgba(12, 16, 36, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 59, 92, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(255, 59, 92, 0.3);
+    z-index: 999999;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #f8f9fa;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideInCS 0.4s ease-out;
+    box-sizing: border-box;
+}
+
+@keyframes slideInCS {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#convoshield-alert-overlay .cs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+#convoshield-alert-overlay .cs-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ff3b5c;
+    /* Danger red */
+}
+
+#convoshield-alert-overlay .cs-close {
+    background: transparent;
+    border: none;
+    color: #a0aabf;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#convoshield-alert-overlay .cs-close:hover {
+    color: white;
+}
+
+#convoshield-alert-overlay .cs-body {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #e2e8f0;
+}
+
+#convoshield-alert-overlay .cs-body strong {
+    color: #ffb300;
+}
+
+#convoshield-alert-overlay .cs-tactics {
+    background: rgba(255, 59, 92, 0.1);
+    border-left: 3px solid #ff3b5c;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 0 4px 4px 0;
+    font-size: 12px;
+}
+
+#convoshield-alert-overlay .cs-btn {
+    background: linear-gradient(135deg, #005f77, #8a2be2);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+#convoshield-alert-overlay .cs-btn:hover {
+    background: linear-gradient(135deg, #007694, #9a3bf2);
+}
