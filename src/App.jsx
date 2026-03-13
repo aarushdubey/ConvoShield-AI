@@ -1,7 +1,6 @@
 import { useState, useCallback, useRef } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import ApiKeyModal from './components/ApiKeyModal'
 import ChatInput from './components/ChatInput'
 import SampleConversations from './components/SampleConversations'
 import AnalysisResult from './components/AnalysisResult'
@@ -9,17 +8,13 @@ import { analyzeConversation } from './services/nvidiaService'
 import './App.css'
 
 function App() {
-    const [apiKey, setApiKey] = useState(() => localStorage.getItem('nvidia_api_key') || '')
+    const hardcodedKey = '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';
+    const [apiKey, setApiKey] = useState(hardcodedKey)
     const [isLoading, setIsLoading] = useState(false)
     const [result, setResult] = useState(null)
     const [error, setError] = useState('')
     const [inputText, setInputText] = useState('')
     const resultsRef = useRef(null)
-
-    const handleSaveKey = (key) => {
-        setApiKey(key)
-        localStorage.setItem('nvidia_api_key', key)
-    }
 
     const handleAnalyze = useCallback(async (text) => {
         setError('')
@@ -80,7 +75,6 @@ function App() {
 
     return (
         <div className="app">
-            {!apiKey && <ApiKeyModal onSave={handleSaveKey} />}
 
             <Header onReset={handleReset} />
 
