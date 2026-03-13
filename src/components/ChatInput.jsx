@@ -1,22 +1,48 @@
+import { useState, useRef } from 'react'
+import Tesseract from 'tesseract.js'
 import './ChatInput.css'
 
 export default function ChatInput({ onAnalyze, isLoading, text = '', setText }) {
+    const [isExtracting, setIsExtracting] = useState(false)
+    const fileInputRef = useRef(null)
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (text.trim() && !isLoading) {
+        if (text.trim() && !isLoading && !isExtracting) {
             onAnalyze(text.trim())
+        }
+    }
+
+    const handleFileUpload = async (file) => {
+        if (!file) return;
+
+        if (file.type === 'text/plain') {
+            const reader = new FileReader();
+            reader.onload = (ev) => setText(ev.target.result);
+            reader.readAsText(file);
+        } else if (file.type.startsWith('image/')) {
+            setIsExtracting(true);
+            try {
+                const result = await Tesseract.recognize(file, 'eng');
+                setText(result.data.text);
+            } catch (err) {
+                alert('Failed to extract text from the image. Please try another or type manually.');
+            } finally {
+                setIsExtracting(false);
+            }
+        } else {
+            alert('Unsupported file type. Please upload a .txt file or an image (png, jpg).');
         }
     }
 
     const handleDrop = (e) => {
         e.preventDefault()
-        const file = e.dataTransfer.files[0]
-        if (file && file.type === 'text/plain') {
-            const reader = new FileReader()
-            reader.onload = (ev) => setText(ev.target.result)
-            reader.readAsText(file)
-        }
+        handleFileUpload(e.dataTransfer.files[0])
+    }
+
+    const handleFileInput = (e) => {
+        handleFileUpload(e.target.files[0])
+        if (fileInputRef.current) fileInputRef.current.value = '';
     }
 
     return (
@@ -41,32 +67,47 @@ export default function ChatInput({ onAnalyze, isLoading, text = '', setText }) 
                             id="conversation-input"
                             value={text}
                             onChange={(e) => setText(e.target.value)}
-                            placeholder={`Paste conversation text here...\n\nExample format:\nPerson A: Hello, how are you?\nPerson B: I'm great! I have an amazing opportunity for you...`}
+                            placeholder={isExtracting ? "Extracting text from image..." : `Paste conversation text here...\n\nExample format:\nPerson A: Hello, how are you?\nPerson B: I'm great! I have an amazing opportunity for you...`}
                             rows={12}
                             className="chat-textarea"
-                            disabled={isLoading}
+                            disabled={isLoading || isExtracting}
                         />
                         <div className="textarea-footer">
                             <span className="char-count" data-warn={text.length > 10000}>
                                 {text.length.toLocaleString()} characters
                             </span>
-                            <span className="drop-hint">📎 Drag & drop a .txt file</span>
+                            <span className="drop-hint">📎 Drag & drop a .txt or Image file</span>
                         </div>
                     </div>
 
                     <div className="chat-actions">
+                        <input
+                            type="file"
+                            accept="image/*,.txt"
+                            style={{ display: 'none' }}
+                            ref={fileInputRef}
+                            onChange={handleFileInput}
+                        />
+                        <button
+                            type="button"
+                            className="btn-secondary"
+                            onClick={() => fileInputRef.current?.click()}
+                            disabled={isLoading || isExtracting}
+                        >
+                            {isExtracting ? 'Scanning Image...' : 'Upload Image / File'}
+                        </button>
                         <button
                             type="button"
                             className="btn-secondary"
                             onClick={() => setText('')}
-                            disabled={!text || isLoading}
+                            disabled={!text || isLoading || isExtracting}
                         >
                             Clear
                         </button>
                         <button
                             type="submit"
                             className="btn-primary analyze-btn"
-                            disabled={!text.trim() || isLoading}
+                            disabled={!text.trim() || isLoading || isExtracting}
                             id="analyze-btn"
                         >
                             {isLoading ? (
