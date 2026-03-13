@@ -20,18 +20,18 @@
 }
 
 .analysis-header.risk-low {
-    background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), transparent);
-    border-bottom-color: rgba(0, 255, 136, 0.15);
+    background: linear-gradient(135deg, rgba(46, 125, 50, 0.08), transparent);
+    border-bottom-color: rgba(46, 125, 50, 0.15);
 }
 
 .analysis-header.risk-moderate {
-    background: linear-gradient(135deg, rgba(255, 170, 0, 0.08), transparent);
-    border-bottom-color: rgba(255, 170, 0, 0.15);
+    background: linear-gradient(135deg, rgba(245, 124, 0, 0.08), transparent);
+    border-bottom-color: rgba(245, 124, 0, 0.15);
 }
 
 .analysis-header.risk-high {
-    background: linear-gradient(135deg, rgba(255, 59, 92, 0.08), transparent);
-    border-bottom-color: rgba(255, 59, 92, 0.15);
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.08), transparent);
+    border-bottom-color: rgba(211, 47, 47, 0.15);
 }
 
 .analysis-type {
@@ -103,8 +103,8 @@
 
 .tactic-tag {
     padding: 3px 10px;
-    background: rgba(123, 47, 247, 0.1);
-    border: 1px solid rgba(123, 47, 247, 0.2);
+    background: rgba(194, 24, 91, 0.1);
+    border: 1px solid rgba(194, 24, 91, 0.2);
     border-radius: 14px;
     font-size: 0.7rem;
     font-weight: 600;
@@ -138,7 +138,7 @@
 
 .tab-btn:hover {
     color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .tab-btn.active {
@@ -153,7 +153,7 @@
     min-width: 20px;
     height: 20px;
     padding: 0 6px;
-    background: rgba(255, 59, 92, 0.15);
+    background: rgba(211, 47, 47, 0.15);
     color: var(--accent-red);
     border-radius: 10px;
     font-size: 0.7rem;
@@ -196,7 +196,7 @@
 
 .key-findings li {
     padding: var(--space-sm) var(--space-md);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.03);
     border-left: 3px solid var(--accent-amber);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-size: 0.82rem;
@@ -216,7 +216,7 @@
 }
 
 .more-findings:hover {
-    background: rgba(0, 212, 255, 0.05);
+    background: rgba(233, 30, 99, 0.05);
 }
 
 @media (max-width: 700px) {

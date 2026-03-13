@@ -57,7 +57,7 @@ function App() {
                 margin: [10, 10],
                 filename: `ConvoShield_Report_${new Date().toISOString().slice(0, 10)}.pdf`,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, backgroundColor: '#0c1024' },
+                html2canvas: { scale: 2, backgroundColor: '#f8f9fa' },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             }
             html2pdf().set(opt).from(element).save()

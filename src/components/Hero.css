@@ -18,8 +18,8 @@
     position: absolute;
     inset: 0;
     background-image:
-        linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(233, 30, 99, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(233, 30, 99, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
@@ -35,7 +35,7 @@
 .hero-glow-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent);
+    background: radial-gradient(circle, rgba(233, 30, 99, 0.05), transparent);
     top: -200px;
     right: -100px;
     animation: float 8s ease-in-out infinite;
@@ -44,7 +44,7 @@
 .hero-glow-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(123, 47, 247, 0.12), transparent);
+    background: radial-gradient(circle, rgba(194, 24, 91, 0.05), transparent);
     bottom: -150px;
     left: -100px;
     animation: float 10s ease-in-out infinite reverse;
@@ -97,8 +97,8 @@
     align-items: center;
     gap: var(--space-sm);
     padding: 6px 16px;
-    background: rgba(123, 47, 247, 0.1);
-    border: 1px solid rgba(123, 47, 247, 0.25);
+    background: rgba(233, 30, 99, 0.08);
+    border: 1px solid rgba(233, 30, 99, 0.2);
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -140,7 +140,7 @@
     align-items: center;
     gap: 6px;
     padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.03);
     border: 1px solid var(--border-subtle);
     border-radius: 50px;
     font-size: 0.85rem;

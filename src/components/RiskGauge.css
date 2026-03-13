@@ -36,13 +36,13 @@
 }
 
 .risk-gauge-low .gauge-risk-label {
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    text-shadow: 0 0 10px rgba(46, 125, 50, 0.2);
 }
 
 .risk-gauge-moderate .gauge-risk-label {
-    text-shadow: 0 0 20px rgba(255, 170, 0, 0.3);
+    text-shadow: 0 0 10px rgba(245, 124, 0, 0.2);
 }
 
 .risk-gauge-high .gauge-risk-label {
-    text-shadow: 0 0 20px rgba(255, 59, 92, 0.3);
+    text-shadow: 0 0 10px rgba(211, 47, 47, 0.2);
 }

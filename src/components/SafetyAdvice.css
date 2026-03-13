@@ -15,15 +15,15 @@
     align-items: flex-start;
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
-    background: rgba(0, 255, 136, 0.03);
-    border: 1px solid rgba(0, 255, 136, 0.1);
+    background: rgba(46, 125, 50, 0.03);
+    border: 1px solid rgba(46, 125, 50, 0.1);
     border-radius: var(--radius-md);
     transition: all var(--transition-fast);
 }
 
 .advice-item:hover {
-    border-color: rgba(0, 255, 136, 0.25);
-    background: rgba(0, 255, 136, 0.06);
+    border-color: rgba(46, 125, 50, 0.25);
+    background: rgba(46, 125, 50, 0.06);
 }
 
 .advice-icon {
@@ -40,8 +40,8 @@
 
 .emergency-section {
     padding: var(--space-lg);
-    background: rgba(255, 59, 92, 0.05);
-    border: 1px solid rgba(255, 59, 92, 0.15);
+    background: rgba(211, 47, 47, 0.05);
+    border: 1px solid rgba(211, 47, 47, 0.15);
     border-radius: var(--radius-lg);
 }
 
@@ -63,7 +63,7 @@
     flex-direction: column;
     gap: 4px;
     padding: var(--space-md);
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(0, 0, 0, 0.03);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
 }
