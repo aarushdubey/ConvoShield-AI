@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './Header.css'
 
-export default function Header({ onReset }) {
+export default function Header({ onReset, setView, currentView }) {
     return (
         <header className="header" id="app-header">
             <div className="header-inner container">
-                <a href="#" className="header-logo" onClick={(e) => { e.preventDefault(); onReset?.(); }}>
+                <a href="#" className="header-logo" onClick={(e) => { e.preventDefault(); setView('main'); onReset?.(); }}>
                     <div className="logo-icon">
                         <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 4L36 14V30L20 40L4 30V14L20 4Z" stroke="url(#logo-grad)" strokeWidth="2.5" fill="rgba(0,212,255,0.08)" />
@@ -25,8 +25,9 @@ export default function Header({ onReset }) {
                 </a>
 
                 <nav className="header-nav">
-                    <a href="#analyzer" className="nav-link">Analyze</a>
-                    <a href="#how-it-works" className="nav-link">How It Works</a>
+                    <a href="#analyzer" className="nav-link" onClick={() => setView('main')}>Analyze</a>
+                    <a href="#how-it-works" className="nav-link" onClick={() => setView('main')}>How It Works</a>
+                    <a href="#" className={`nav-link ${currentView === 'encyclopedia' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setView('encyclopedia'); window.scrollTo(0, 0); }}>Encyclopedia</a>
                     <span className="header-badge">
                         <span className="badge-dot"></span>
                         GDG Code4Her

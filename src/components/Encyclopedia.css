@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+.encyclopedia-container {
+    background-color: var(--bg-primary);
+    /* light theme */
+    color: var(--text-primary);
+    min-height: calc(100vh - 64px);
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    margin-top: 0;
+}
+
+.encyclopedia-hero {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+}
+
+.encyclopedia-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.highlight-cyan {
+    color: transparent;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.encyclopedia-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.tactics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tactic-card.glass-dark {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.tactic-card.glass-dark:hover {
+    border-color: var(--border-glow);
+    box-shadow: 0 10px 25px -5px rgba(233, 30, 99, 0.1), 0 8px 10px -6px rgba(233, 30, 99, 0.1);
+    transform: translateY(-5px);
+}
+
+.tactic-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1rem;
+}
+
+.tactic-icon {
+    font-size: 2.5rem;
+}
+
+.tactic-title-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.tactic-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.tactic-type {
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+}
+
+.tactic-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.tactic-signs {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 2px solid var(--accent-purple);
+}
+
+.signs-title {
+    font-size: 0.85rem;
+    color: var(--accent-purple);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+.signs-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.signs-list li {
+    margin-bottom: 0.5rem;
+}
+
+.signs-list li:last-child {
+    margin-bottom: 0;
+}
+
+.tactic-example {
+    margin-top: auto;
+    background: rgba(245, 124, 0, 0.08);
+    /* Amber for example quote */
+    border: 1px solid rgba(245, 124, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.example-label {
+    font-size: 0.75rem;
+    color: var(--risk-moderate);
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.example-text {
+    font-size: 0.95rem;
+    color: var(--risk-moderate);
+    font-style: italic;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .tactics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .encyclopedia-title {
+        font-size: 2.5rem;
+    }
+}
