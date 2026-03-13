@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Encyclopedia.css';
 
 const tactics = [
@@ -82,45 +82,125 @@ const tactics = [
     }
 ];
 
+const trendingScams = [
+    {
+        id: 'digital-arrest',
+        title: 'The "Digital Arrest" Scam',
+        severity: 'Critical',
+        date: 'Updated Mar 2026',
+        description: 'Scammers pose as CBI/ED/Police officers. They claim you are under "digital arrest" via a video call for alleged money laundering or drug parcels.',
+        impact: 'Victims are coerced into staying in front of their cameras for hours while scammers drain their accounts.',
+        prevention: 'Real authorities never arrest people via Skype or WhatsApp video. Hang up immediately.'
+    },
+    {
+        id: 'fedex-parcel',
+        title: 'FedEx/Courier Parcel Scam',
+        severity: 'High',
+        date: 'Updated Feb 2026',
+        description: 'You receive a call stating a parcel in your name was seized containing illegal items (drugs/passports).',
+        impact: 'You are "transferred" to fake narcotics officers who demand money to "clear" the case.',
+        prevention: 'Never provide Aadhaar or bank details over a call. Check tracking on official websites only.'
+    },
+    {
+        id: 'ai-voice-clone',
+        title: 'AI Voice Clone Kidnapping',
+        severity: 'Extreme',
+        date: 'Updated Jan 2026',
+        description: 'Using short clips from social media, AI clones a family member\'s voice to fake a distress call about an accident or kidnapping.',
+        impact: 'Parents/Grandparents are tricked into sending ransom money under extreme emotional pressure.',
+        prevention: 'Set a "Family Safety Word" that only you know. Call the family member directly on their known number.'
+    },
+    {
+        id: 'investment-app',
+        title: 'Fake Stock Investment Groups',
+        severity: 'High',
+        date: 'Updated Mar 2026',
+        description: 'Fraudulent WhatsApp/Telegram groups promising 200% returns using "insider info" from fake institutional accounts.',
+        impact: 'Users see fake profits on a rigged app, but are blocked when they try to withdraw money.',
+        prevention: 'If a stranger offers you a stock tip on WhatsApp, it is 100% a scam. Only use SEBI registered brokers.'
+    }
+];
+
 export default function Encyclopedia() {
+    const [tab, setTab] = useState('tactics'); // 'tactics' or 'trending'
+
     return (
         <div className="encyclopedia-container">
             <div className="encyclopedia-hero">
-                <h1 className="encyclopedia-title">Threat <span className="highlight-cyan">Encyclopedia</span></h1>
+                <h1 className="encyclopedia-title">Security <span className="highlight-cyan">Library</span></h1>
                 <p className="encyclopedia-subtitle">
-                    Explore the tactics used by scammers and manipulators. Information is your best defense.
+                    Knowledge is your first line of defense. Learn to spot scams before they happen.
                 </p>
+
+                <div className="encyclopedia-tabs">
+                    <button
+                        className={`tab-toggle ${tab === 'tactics' ? 'active' : ''}`}
+                        onClick={() => setTab('tactics')}
+                    >
+                        Manipulation Tactics
+                    </button>
+                    <button
+                        className={`tab-toggle ${tab === 'trending' ? 'active' : ''}`}
+                        onClick={() => setTab('trending')}
+                    >
+                        Trending Real-Life Scams
+                    </button>
+                </div>
             </div>
 
-            <div className="tactics-grid">
-                {tactics.map((tactic) => (
-                    <div key={tactic.id} className="tactic-card glass-dark">
-                        <div className="tactic-header">
-                            <span className="tactic-icon">{tactic.icon}</span>
-                            <div className="tactic-title-wrapper">
-                                <h2 className="tactic-name">{tactic.name}</h2>
-                                <span className="tactic-type">{tactic.type}</span>
+            {tab === 'tactics' ? (
+                <div className="tactics-grid">
+                    {tactics.map((tactic) => (
+                        <div key={tactic.id} className="tactic-card glass-dark">
+                            <div className="tactic-header">
+                                <span className="tactic-icon">{tactic.icon}</span>
+                                <div className="tactic-title-wrapper">
+                                    <h2 className="tactic-name">{tactic.name}</h2>
+                                    <span className="tactic-type">{tactic.type}</span>
+                                </div>
+                            </div>
+
+                            <p className="tactic-desc">{tactic.description}</p>
+
+                            <div className="tactic-signs">
+                                <h3 className="signs-title">⚠️ Warning Signs</h3>
+                                <ul className="signs-list">
+                                    {tactic.warningSigns.map((sign, idx) => (
+                                        <li key={idx}>{sign}</li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="tactic-example">
+                                <span className="example-label">Example Quote:</span>
+                                <p className="example-text">{tactic.example}</p>
                             </div>
                         </div>
+                    ))}
+                </div>
+            ) : (
+                <div className="trending-grid">
+                    {trendingScams.map((scam) => (
+                        <div key={scam.id} className="scam-card glass-dark">
+                            <div className="scam-badge">
+                                <span className={`severity-tag ${scam.severity.toLowerCase()}`}>{scam.severity}</span>
+                                <span className="scam-date">{scam.date}</span>
+                            </div>
+                            <h2 className="scam-title">{scam.title}</h2>
+                            <p className="scam-desc">{scam.description}</p>
 
-                        <p className="tactic-desc">{tactic.description}</p>
-
-                        <div className="tactic-signs">
-                            <h3 className="signs-title">⚠️ Warning Signs</h3>
-                            <ul className="signs-list">
-                                {tactic.warningSigns.map((sign, idx) => (
-                                    <li key={idx}>{sign}</li>
-                                ))}
-                            </ul>
+                            <div className="scam-meta">
+                                <div className="meta-item">
+                                    <strong>Impact:</strong> {scam.impact}
+                                </div>
+                                <div className="meta-item prevention">
+                                    <strong>How to avoid:</strong> {scam.prevention}
+                                </div>
+                            </div>
                         </div>
-
-                        <div className="tactic-example">
-                            <span className="example-label">Example Quote:</span>
-                            <p className="example-text">{tactic.example}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
