@@ -1,7 +1,7 @@
 // NVIDIA AI Service – uses OpenAI-compatible API at integrate.api.nvidia.com
 // Model: meta/llama-3.1-70b-instruct
 
-const NVIDIA_API_URL = 'https://corsproxy.io/?https://integrate.api.nvidia.com/v1/chat/completions';
+const NVIDIA_API_URL = '/api/nvidia/v1/chat/completions';
 const MODEL = 'meta/llama-3.1-70b-instruct';
 
 const SYSTEM_PROMPT = `You are an expert AI cyber-safety analyst specializing in detecting online scams, grooming, manipulation, harassment, and phishing in conversations. 
