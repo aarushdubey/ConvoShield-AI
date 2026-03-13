@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "ConvoShield AI",
+    "version": "1.0",
+    "description": "Scan WhatsApp Web conversations for scams, grooming, and manipulation using NVIDIA AI.",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage"
+    ],
+    "host_permissions": [
+        "https://web.whatsapp.com/*",
+        "https://integrate.api.nvidia.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "ConvoShield AI"
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
