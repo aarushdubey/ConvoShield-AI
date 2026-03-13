@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+.helplines-container {
+    background-color: #06080f;
+    /* dark navy */
+    color: #e8eaf6;
+    min-height: calc(100vh - 64px);
+    /* assuming 64px header */
+    padding: 6rem 2rem 4rem;
+    font-family: 'Syne', sans-serif;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Background effects for the dark theme */
+.helplines-container::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+}
+
+.helplines-container::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(123, 47, 247, 0.12), transparent);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+}
+
+.helplines-hero {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+}
+
+.helplines-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+    color: #e8eaf6;
+}
+
+.helplines-subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    color: #6b7394;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.helpline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.helpline-card.glass-dark {
+    background: rgba(20, 24, 45, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(100, 120, 200, 0.15);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.helpline-card.glass-dark:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 212, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.helpline-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: #e8eaf6;
+    letter-spacing: -0.01em;
+}
+
+.helpline-detail {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1rem;
+    color: #00d4ff;
+    /* exact cyan color from prompt */
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.helpline-desc {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: #6b7394;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.helpline-tags {
+    display: flex;
+    gap: 0.5rem;
+    mt: auto;
+}
+
+.helpline-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: #c299ff;
+    text-transform: uppercase;
+    background: rgba(123, 47, 247, 0.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .helpline-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .helplines-title {
+        font-size: 1.75rem;
+    }
+}

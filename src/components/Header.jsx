@@ -28,6 +28,7 @@ export default function Header({ onReset, setView, currentView }) {
                     <a href="#analyzer" className="nav-link" onClick={() => setView('main')}>Analyze</a>
                     <a href="#how-it-works" className="nav-link" onClick={() => setView('main')}>How It Works</a>
                     <a href="#" className={`nav-link ${currentView === 'encyclopedia' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setView('encyclopedia'); window.scrollTo(0, 0); }}>Encyclopedia</a>
+                    <a href="#" className={`nav-link ${currentView === 'helplines' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); setView('helplines'); window.scrollTo(0, 0); }}>Helplines</a>
                     <span className="header-badge">
                         <span className="badge-dot"></span>
                         GDG Code4Her
