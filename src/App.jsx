@@ -5,6 +5,7 @@ import ChatInput from './components/ChatInput'
 import SampleConversations from './components/SampleConversations'
 import AnalysisResult from './components/AnalysisResult'
 import Encyclopedia from './components/Encyclopedia'
+import Helplines from './components/Helplines'
 import { analyzeConversation } from './services/nvidiaService'
 import './App.css'
 
@@ -83,6 +84,8 @@ function App() {
             <main>
                 {currentView === 'encyclopedia' ? (
                     <Encyclopedia />
+                ) : currentView === 'helplines' ? (
+                    <Helplines />
                 ) : (
                     <>
                         <Hero />
