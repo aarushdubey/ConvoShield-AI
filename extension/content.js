@@ -1,36 +1,30 @@
 (function () {
-    // WhatsApp Web DOM is complex and constantly changing. 
-    // We grab the text content of the message bubbles currently visible.
-
     const extractChat = () => {
-        // Attempt to locate the main message container
-        const messageContainers = document.querySelectorAll('div[role="row"]');
+        // Find all message bubbles by looking for the standard message-in and message-out classes
+        // WhatsApp Web frequently obfuscates classes, but usually keeps 'message-in' and 'message-out'
+        const messages = document.querySelectorAll('div[class*="message-in"], div[class*="message-out"]');
 
-        if (!messageContainers || messageContainers.length === 0) {
+        if (!messages || messages.length === 0) {
+            // Fallback: grab all text from the main chat container if specific bubbles aren't found
+            const mainChat = document.querySelector('#main');
+            if (mainChat && mainChat.innerText) {
+                return mainChat.innerText;
+            }
             return '';
         }
 
         let chatLog = [];
 
-        messageContainers.forEach(row => {
-            // WhatsApp distinguishes incoming vs outgoing usually by a generic marker like `.message-in` vs `.message-out`
-            // Or by verifying if it contains an element with a specific class.
-            // Since classes are obfuscated, we just grab spans that look like text.
+        messages.forEach(msg => {
+            const isIncoming = msg.className.includes('message-in');
+            const prefix = isIncoming ? 'Stranger: ' : 'You: ';
 
-            const textSpans = row.querySelectorAll('.selectable-text');
-            if (textSpans && textSpans.length > 0) {
-                let msgText = Array.from(textSpans).map(span => span.textContent.trim()).join(' ');
-                if (msgText) {
-                    // crude heuristic to figure out direction if message-in exists
-                    const isIncoming = row.querySelector('.message-in') !== null;
-                    const isOutgoing = row.querySelector('.message-out') !== null;
-
-                    let prefix = 'Person A: '; // Unknown
-                    if (isIncoming) prefix = 'Stranger: ';
-                    if (isOutgoing) prefix = 'You: ';
-
-                    chatLog.push(prefix + msgText);
-                }
+            // Grab the raw text of the bubble. It will include timestamps, 
+            // but the LLM is smart enough to ignore them.
+            let text = msg.innerText;
+            if (text) {
+                text = text.trim().replace(/\n/g, ' ');
+                chatLog.push(prefix + text);
             }
         });
 
