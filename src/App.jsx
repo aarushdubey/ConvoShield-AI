@@ -179,6 +179,15 @@ function App() {
                 <div className="container footer-inner">
                     <p>Built with ❤️ for <strong>GDG Code4Her Hackathon 2026</strong></p>
                     <p className="footer-sub">Track 2: Cybersecurity &amp; Privacy for Women • Powered by NVIDIA AI</p>
+                    <div style={{ marginTop: '15px' }}>
+                        <button
+                            className="btn-secondary"
+                            style={{ fontSize: '11px', padding: '6px 15px', color: 'var(--primary)', borderColor: 'var(--primary)' }}
+                            onClick={() => window.open('/project-pitch.html', '_blank')}
+                        >
+                            📄 Download Project Pitch PDF
+                        </button>
+                    </div>
                 </div>
             </footer>
         </div>
